@@ -206,6 +206,35 @@ fn main() {
     };
     let json_string = cmd.serialize();
     println!("json string is: {}", json_string);
+
+    // Match
+    let age = 43;
+    match age {
+        1 => println!("age is 1"),
+        13..=19 => println!("age is between 13 and 19"),
+        x => println!("You are {} years old", x),
+    }
+
+    // Option
+    let username = get_username(1);
+    match username {
+        Some(name) => println!("username is: {}", name),
+        None => {}
+    }
+    // or with if let, which is more concise, but less flexible (ownership error)
+    // if let Some(name) = username {
+    //     println!("username is: {}", name);
+    // }
+}
+
+fn get_username(user_id: u32) -> Option<String> {
+    // get username from database
+    let db_result = String::from("Elvis");
+    if user_id == 1 {
+        Some(db_result)
+    } else {
+        None
+    }
 }
 
 struct Product {
@@ -232,7 +261,37 @@ enum Command {
 
 impl Command {
     fn serialize(&self) -> String {
-        String::from("JSON String")
+        let json_string = match self {
+            Command::Undo => String::from("{ \"cmd\": \"undo\" }"),
+            Command::Redo => String::from("{ \"cmd\": \"redo\" }"),
+            Command::AddText(text) => {
+                format!(
+                    "{{
+                        \"cmd\": \"add_text\", \
+                        \"text\": {text}
+                    }}"
+                )
+            }
+            Command::MoveCursor(x, y) => {
+                format!(
+                    "{{
+                        \"cmd\": \"move_cursor\", \
+                        \"x\": {x}, \
+                        \"y\": {y}
+                    }}"
+                )
+            }
+            Command::Replace { from, to } => {
+                format!(
+                    "{{ 
+                        \"cmd\": \"replace\", \
+                        \"from\": {from}, \
+                        \"to\": {to}
+                    }}"
+                )
+            }
+        };
+        json_string
     }
 }
 
