@@ -174,6 +174,95 @@ fn main() {
     let s2 = "hello";
     my_string_function(&s1);
     my_string_function(s2);
+
+    /* STRUCTS */
+    let mut book = Product::new(String::from("The Lord of the Rings"), 10.99, true);
+    let price = book.price;
+    book.in_stock = false;
+    let s_tax = book.calculate_sales_tax();
+    println!("sales tax is: {}", s_tax);
+    book.set_price(1.0);
+    book.buy();
+
+    // Tuple Structs
+    struct RGB(i32, i32, i32);
+    struct CMYK(i32, i32, i32, i32);
+    struct Point(i32, i32, i32);
+
+    let rgb = RGB(0, 0, 0);
+    let cmyk = CMYK(0, 0, 0, 0);
+    let point = Point(0, 0, 0);
+
+    // Unit-like Structs
+    struct UnitLikeStruct;
+
+    // Enums
+    let cmd = Command::Undo;
+    let cmd = Command::AddText(String::from("Hello"));
+    let cmd = Command::MoveCursor(10, 20);
+    let cmd = Command::Replace {
+        from: ("hola").to_ascii_uppercase(),
+        to: ("hello".to_lowercase()),
+    };
+    let json_string = cmd.serialize();
+    println!("json string is: {}", json_string);
+}
+
+struct Product {
+    name: String,
+    price: f32,
+    in_stock: bool,
+    category: Category,
+}
+
+// Enums
+enum Category {
+    Books,
+    Clothes,
+    Electronics,
+}
+
+enum Command {
+    Undo,
+    Redo,
+    AddText(String),
+    MoveCursor(i32, i32),
+    Replace { from: String, to: String },
+}
+
+impl Command {
+    fn serialize(&self) -> String {
+        String::from("JSON String")
+    }
+}
+
+impl Product {
+    fn new(name: String, price: f32, in_stock: bool) -> Product {
+        Product {
+            name,
+            price,
+            in_stock,
+            category: Category::Books,
+        }
+    }
+
+    fn get_default_sales_tax() -> f32 {
+        0.1
+    }
+
+    fn calculate_sales_tax(&self) -> f32 {
+        self.price * Product::get_default_sales_tax()
+    }
+
+    fn set_price(&mut self, price: f32) {
+        self.price = price;
+    }
+
+    fn buy(self) -> i32 {
+        let name = self.name;
+        println!("{name} was bought");
+        123
+    }
 }
 
 fn my_string_function(a: &str) -> String {
