@@ -118,6 +118,66 @@ fn main() {
     let a = [1, 2, 3, 4, 5];
     let a_slice: &[i32] = &a[1..3];
     println!("a slice: {:?}", a_slice);
+
+    // Strings
+    let s1 = "Hola Mundo";
+    let s2 = String::from("hello world");
+    let s3 = "Hola Hola ".to_string();
+    let s4 = "Hola Hola ".to_owned();
+    let s5 = &s4[0..2];
+    println!("s5 is: {}", s5);
+
+    // Manipulating strings
+    let mut s = String::from("foo");
+    s.push_str("bar");
+    println!("s is: {}", s);
+    s.replace_range(0..2, "replace_with");
+    println!("s is: {}", s);
+
+    // string concatenation
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // s1 is moved here and can no longer be used
+    println!("s3 is: {}", s3);
+
+    // string formatting
+    let s1 = String::from("tic");
+    let s2 = String::from("tac");
+    let s3 = String::from("toe");
+    let s4 = format!("{}-{}-{}", s1, s2, s3);
+    // less efficient than concatenation, because it allocates new memory (s4) and copies the values into it. but more readable
+    println!("s4 is: {}", s4);
+
+    // Concats
+    let a1 = ["first", "second"].concat();
+    println!("a1 is: {}", a1);
+    let a2 = format!("{}-{}", "first", "second"); // more efficient than concat, because it doesn't allocate new memory
+    println!("a2 is: {}", a2);
+    let a3 = ["first", "second"].join("-"); // more efficient than concat, because it doesn't allocate new memory
+    print!("a3 is: {}", a3);
+
+    let s1 = "🦀🦀🦀🦀🦀";
+    let s2 = &s1[0..4];
+    println!("s2 is: {}", s2);
+
+    for b in s1.bytes() {
+        println!("b is: {}", b);
+    }
+
+    for b in s1.chars() {
+        println!("b is: {}", b);
+    }
+
+    println!("s2 is: {}", s1.chars().count());
+
+    let s1 = String::from("hello");
+    let s2 = "hello";
+    my_string_function(&s1);
+    my_string_function(s2);
+}
+
+fn my_string_function(a: &str) -> String {
+    return format!("{}-{}", a, "other string");
 }
 
 fn function_ownwership(s: String) {
