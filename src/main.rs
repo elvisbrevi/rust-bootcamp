@@ -225,6 +225,40 @@ fn main() {
     // if let Some(name) = username {
     //     println!("username is: {}", name);
     // }
+
+    // Vector
+    let v1: Vec<String> = Vec::new();
+    let mut v2 = Vec::new();
+    v2.push(String::from("Hello"));
+    v2.push(String::from("World"));
+
+    let v3 = vec![1, 2, 3, 4, 5];
+    let ele2 = v3[0]; // can panic, but not in this case, because it's a primitive type
+
+    //let ele1 = &v2[0]; // can panic, because it's a non-primitive type
+    //let ele1 = v2.remove(0); // safe way to move the value out of the vector, but it's slower and all elements after the removed one have to be moved
+    let ele1 = v2.get(0); // returns an Option<&T>, so it's safe, but slower
+
+    if let Some(e) = ele1 {
+        println!("ele is: {}", e);
+    }
+
+    // iterating over a vector
+    for s in &mut v2 {
+        s.push_str("!"); // s is a mutable reference
+    }
+
+    for s in &v2 {
+        println!("s is: {}", s);
+    }
+
+    let mut v4 = vec![];
+    for s in v2 {
+        v4.push(s);
+    }
+
+    // v2 ownership is moved to v4, so v2 is no longer available
+    //let i = v2.get(0);
 }
 
 fn get_username(user_id: u32) -> Option<String> {
@@ -233,6 +267,7 @@ fn get_username(user_id: u32) -> Option<String> {
     db_result.ok()
 }
 
+// Result
 fn query_db(query: String) -> Result<String, String> {
     if query.is_empty() {
         Err(String::from("Query is empty"))
