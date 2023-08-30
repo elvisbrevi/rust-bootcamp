@@ -252,6 +252,10 @@ fn main() {
         println!("s is: {}", s);
     }
 
+    for s in v2.iter() {
+        println!("s is: {}", s);
+    }
+
     let mut v4 = vec![];
     for s in v2 {
         v4.push(s);
