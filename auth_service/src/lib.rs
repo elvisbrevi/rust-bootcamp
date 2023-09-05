@@ -1,34 +1,43 @@
-struct Credentials {
-    username: String,
-    password: String,
-}
+mod database {
+    pub enum Status {
+        Connected,
+        Interrupted,
+    }
 
-enum Status {
-    Connected,
-    Interrupted,
-}
+    pub fn connect_to_database() -> Status {
+        return Status::Connected;
+    }
 
-fn authenticate(creds: Credentials) {
-    if let Status::Connected = connect_to_database() {
-        login(creds);
-    } else {
-        println!("Could not connect to database");
+    pub fn get_user() {
+        // get user from database
     }
 }
 
-fn connect_to_database() -> Status {
-    return Status::Connected;
+mod auth_utils {
+    pub fn login(creds: models::Credentials) {
+        // authenticate user
+        crate::database::get_user();
+    }
+
+    fn logout() {
+        // logout user
+    }
+
+    pub mod models {
+        pub struct Credentials {
+            username: String,
+            password: String,
+        }
+    }
 }
 
-fn login(creds: Credentials) {
-    // authenticate user
-    get_user(creds);
-}
+use auth_utils::models::Credentials;
+use database::Status;
 
-fn logout() {
-    // logout user
-}
-
-fn get_user(creds: Credentials) {
-    // get user from database
+pub fn authenticate(creds: Credentials) {
+    if let Status::Connected = database::connect_to_database() {
+        auth_utils::login(creds);
+    } else {
+        println!("Could not connect to database");
+    }
 }
