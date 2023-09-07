@@ -1,4 +1,4 @@
-use auth_service::Credentials;
+use example_brevi_auth_service::Credentials;
 
 fn main() {
     let creds = Credentials {
@@ -6,5 +6,5 @@ fn main() {
         password: String::from("password"),
     };
 
-    auth_service::authenticate(creds);
+    example_brevi_auth_service::authenticate(creds);
 }

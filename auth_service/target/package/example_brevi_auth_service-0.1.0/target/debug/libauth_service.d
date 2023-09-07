@@ -1,0 +1,1 @@
+/Users/elvisbrevi/Projects/rust-bootcamp/auth_service/target/debug/libauth_service.rlib: /Users/elvisbrevi/Projects/rust-bootcamp/auth_service/src/auth_utils/models.rs /Users/elvisbrevi/Projects/rust-bootcamp/auth_service/src/auth_utils.rs /Users/elvisbrevi/Projects/rust-bootcamp/auth_service/src/database.rs /Users/elvisbrevi/Projects/rust-bootcamp/auth_service/src/lib.rs
