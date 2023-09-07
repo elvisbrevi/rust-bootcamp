@@ -1,6 +1,10 @@
 {
     "rust-analyzer.linkedProjects": [
         "./auth_service/Cargo.toml",
-        "./basics/Cargo.toml"
-    ]
+        "./basics/Cargo.toml",
+        "./auth_service/Cargo.toml",
+        "./auth_service/Cargo.toml",
+        "./auth_service/Cargo.toml"
+    ],
+    "rust-analyzer.showUnlinkedFileNotification": false
 }
