@@ -12,4 +12,6 @@ fn main() {
         height: 32,
         color: color,
     };
+
+    println!("{:?}", square);
 }
