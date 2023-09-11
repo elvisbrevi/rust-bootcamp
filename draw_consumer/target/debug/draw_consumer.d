@@ -1,0 +1,1 @@
+/Users/elvisbrevi/Projects/rust-bootcamp/draw_consumer/target/debug/draw_consumer: /Users/elvisbrevi/Projects/rust-bootcamp/Draw/src/lib.rs /Users/elvisbrevi/Projects/rust-bootcamp/draw_consumer/src/main.rs
