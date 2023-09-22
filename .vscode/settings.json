@@ -7,6 +7,8 @@
         "blog/Cargo.toml",
         "blog/blog_shared/Cargo.toml",
         "bank/Cargo.toml",
+        "exam-1/Cargo.toml",
+        "generics-example/Cargo.toml",
     ],
     "rust-analyzer.showUnlinkedFileNotification": false
 }
