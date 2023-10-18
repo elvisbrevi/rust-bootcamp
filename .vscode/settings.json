@@ -9,6 +9,7 @@
         "bank/Cargo.toml",
         "exam-1/Cargo.toml",
         "generics-example/Cargo.toml",
+        "trait-example/Cargo.toml"
     ],
     "rust-analyzer.showUnlinkedFileNotification": false
 }
