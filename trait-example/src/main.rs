@@ -70,9 +70,18 @@ fn main() {
     paint_vehicule(&car);
     //paint_vehicule(&house); // error because house dont implement Park
     //paint_vehicule(&object); // error because object dont implement Park
+
+    let object = create_paintable_object2(true);
+    paint_red_trait_object(object.as_ref());
+
+    // vector of traits object
+    let paintable_objects: Vec<&dyn Paint> = vec![&car, &house, object.as_ref()];
 }
 
 // Traits bounds
+fn paint_red_trait_object(obj: &dyn Paint) {
+    obj.paint("red".to_string())
+}
 
 fn paint_red1<T: Paint>(obj: &T) {
     obj.paint("red".to_string())
@@ -96,6 +105,22 @@ where
     obj.paint("red".to_string())
 }
 
+// static distpatch, compiler knows return type
 fn create_paintable_object() -> impl Paint {
     House {}
+}
+
+// dynamic distpatch, compiler unknows return type
+fn create_paintable_object2(vehicule: bool) -> Box<dyn Paint> {
+    if vehicule {
+        Box::new(Car {
+            info: VehiculeInfo {
+                make: "Toyota".to_string(),
+                model: "Camry".to_string(),
+                year: 2020,
+            },
+        })
+    } else {
+        Box::new(House {})
+    }
 }
