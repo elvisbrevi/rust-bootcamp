@@ -12,7 +12,8 @@
         "trait-example/Cargo.toml",
         "deriving-traits/Cargo.toml",
         "orphan-rule/Cargo.toml",
-        "generics-lifetime/Cargo.toml"
+        "generics-lifetime/Cargo.toml",
+        "lifetime-elision-rules/Cargo.toml"
     ],
     "rust-analyzer.showUnlinkedFileNotification": false
 }
