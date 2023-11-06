@@ -33,4 +33,31 @@ fn main() {
 
     // case 1: specify type
     let components: Vec<Box<dyn UIComponent>> = vec![Box::new(button_c), button_d];
+
+    // example 2
+    let stack_var = 5;
+    let heap_var = Box::new(4);
+    let res = stack_var + *heap_var;
+    assert_eq!(res, 9);
+
+    // example 3
+    println!("This is an empty cons list: {:?}", create_empty_list());
+    println!(
+        "This is a non-empty cons list: {:?}",
+        create_non_empty_list()
+    );
+}
+
+#[derive(PartialEq, Debug)]
+pub enum List {
+    Cons(i32, Box<List>),
+    Nil,
+}
+
+pub fn create_empty_list() -> List {
+    List::Nil
+}
+
+pub fn create_non_empty_list() -> List {
+    List::Cons(1, Box::new(List::Cons(1, Box::new(List::Nil))))
 }
