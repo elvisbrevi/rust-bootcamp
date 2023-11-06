@@ -22,3 +22,7 @@ auth_service/target/.rustc_info.json
 blog/target/.rustc_info.json
 Draw/target/.rustc_info.json
 draw_consumer/target/.rustc_info.json
+auth_service/target/.rustc_info.json
+blog/target/.rustc_info.json
+Draw/target/.rustc_info.json
+draw_consumer/target/.rustc_info.json
