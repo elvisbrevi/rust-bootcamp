@@ -16,13 +16,5 @@
         "lifetime-elision-rules/Cargo.toml",
         "box-smart-pointer/Cargo.toml"
     ],
-    "rust-analyzer.showUnlinkedFileNotification": false,
-    "background.fullscreen": {
-        "image": "",
-        "images": [],
-        "opacity": 0.91,
-        "size": "cover",
-        "position": "center",
-        "interval": 0
-    }
+    "rust-analyzer.showUnlinkedFileNotification": false
 }
