@@ -13,7 +13,16 @@
         "deriving-traits/Cargo.toml",
         "orphan-rule/Cargo.toml",
         "generics-lifetime/Cargo.toml",
-        "lifetime-elision-rules/Cargo.toml"
+        "lifetime-elision-rules/Cargo.toml",
+        "box-smart-pointer/Cargo.toml"
     ],
-    "rust-analyzer.showUnlinkedFileNotification": false
+    "rust-analyzer.showUnlinkedFileNotification": false,
+    "background.fullscreen": {
+        "image": "",
+        "images": [],
+        "opacity": 0.91,
+        "size": "cover",
+        "position": "center",
+        "interval": 0
+    }
 }
